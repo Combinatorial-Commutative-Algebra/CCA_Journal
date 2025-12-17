@@ -10,6 +10,8 @@ This repository contains the LaTeX style file and a sample manuscript for prepar
 - `CCAlogo.png` — the CCA logo
 - `refs.bib` — sample bibliography file (optional)
 
+For a versioned download, use the Latest Release.
+
 ## Option 1: Overleaf
 
 **Overleaf template (view-only):** https://www.overleaf.com/read/qnpqhkbsjrwk#c6d1f4

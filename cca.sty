@@ -1,0 +1,273 @@
+% Style file for Combinatorial Commutative Algebra
+% CCA is indebted to the Electronic Journal of Combinatorics
+% for graciously allowing us to modify their style file
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cca}[2026/01/01 Combinatorial Commutative Algebra]
+
+% print author footnotes with letters
+\renewcommand{\thefootnote}{\textit{\alph{footnote}}}
+
+% Author command, five arguments, first optional
+% 1st (optional) argument: used for footnotes, if necessary
+% 2nd argument: full name
+% 3nd argument: affiliation
+% 4th argument: email (address@domain without mailto:)
+% 5th argument: website (do not include http:// or https://)
+\renewcommand{\author}[5][]{%
+  \ifx\@empty\authors
+    \gdef\authors{#2}%
+    \ifx&#1&
+    \else
+      \g@addto@macro\authors{\footnotemark[#1]}
+    \fi
+    \ifx&#5&
+      \gdef\affiliations{\noindent#2 {\small (\href{mailto:#4}{#4})\newline{}#3}}%
+    \else
+      \gdef\affiliations{\noindent#2 {\small (\href{mailto:#4}{#4}, \href{http://#5}{\nolinkurl{#5}})\newline{}#3}}%
+    \fi
+  \else
+    \g@addto@macro\authors{\and#2}%
+    \ifx&#1&
+    \else
+      \g@addto@macro\authors{\footnotemark[#1]}
+    \fi
+    \ifx&#5&
+      \g@addto@macro\affiliations{\par\medskip\noindent#2 {\small (\href{mailto:#4}{#4})\newline{}#3}}%
+    \else
+      \g@addto@macro\affiliations{\par\medskip\noindent#2 {\small (\href{mailto:#4}{#4}, \href{http://#5}{\nolinkurl{#5}})\newline{}#3}}%
+    \fi
+  \fi
+}
+\let\authors\@empty
+\let\affiliations\@empty
+
+% author notes
+% first argument is footnote mark number (can be used more than once)
+% second argument is the footnote text
+\newcommand{\authornote}[2]{%
+  \ifx\@empty\authornotes
+    \gdef\authornotes{\footnotetext[#1]{#2}}%
+  \else
+    \g@addto@macro\authornotes{\footnotetext[#1]{#2}}%
+  \fi
+}
+\let\authornotes\@empty
+
+% date line command
+\newcommand{\dateline}[3]{\def\the@dateline{Submitted: \ignorespaces#1;
+    Accepted: \ignorespaces#2; Published: \ignorespaces#3}}
+
+% Canonical copyright license URLs
+\newcommand{\CCBYURL}{https://creativecommons.org/licenses/by/4.0/}
+\newcommand{\CCBYNDURL}{https://creativecommons.org/licenses/by-nd/4.0/}
+
+% command for user selection of copyright notice
+\newcommand{\Copyright}[1]{\def\copy@right{#1}}
+
+% format for title, authors, and date
+\def\@maketitle{%
+  \newpage
+  \null \vskip 2em%
+  \begin{center}%
+    % \let \footnote \thanks
+    {\LARGE \@title \par}%
+    \vskip 1.5em%
+    {\large \lineskip .5em%
+      \begin{tabular}[t]{c}%
+        \authors
+      \end{tabular}\par}%
+    \vskip 1em%
+    {\small \the@dateline}%
+  \end{center}%
+  \par
+  \vskip 1.5em}
+
+% command to print copyright notice
+\def\copyrightfootnote{\def\@thefnmark{\copyright}\@footnotetext}
+
+% update the title command to include new format
+\renewcommand\maketitle{
+    \par
+    \begingroup
+        \newpage
+        \global\@topnum\z@   % Prevents figures from going at top of page.
+        \@maketitle
+        \thispagestyle{plain}
+    \endgroup
+    \copyrightfootnote{\copy@right}
+    \authornotes
+    % reset footnote counter and switch back to numbers
+    \setcounter{footnote}{0}
+    \renewcommand{\thefootnote}{\arabic{footnote}}
+}
+
+% command to insert author information
+\newenvironment{authorinformation}%
+{\section*{Author Information}
+  \begingroup
+  \setlength{\baselineskip}{13pt}
+  \affiliations
+  \par
+  \endgroup
+}
+
+% package options
+\DeclareOption{amsmath}{\let\use@amsmath=\relax}
+\DeclareOption{cleveref}{\let\use@cleveref=\relax}
+\ProcessOptions\relax
+
+% load default packages and page settings
+\RequirePackage[letterpaper,margin=20mm,footskip=10mm]{geometry}
+\ifx\use@amsmath\undefined\else\RequirePackage{amsmath}\fi
+\RequirePackage{amsthm,amssymb}
+\RequirePackage[colorlinks=true,citecolor=black,linkcolor=black,urlcolor=blue,pagebackref]{hyperref}
+\RequirePackage[disable=ifdraft]{microtype}
+
+% use nicer inequalities by default
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\ge}{\geqslant}
+\renewcommand{\le}{\leqslant}
+
+% command to insert corrigenda
+\newenvironment{corrigendum}[1]%
+{\clearpage\newpage\section*{Corrigendum -- submitted #1}}{}
+
+% Defines volume number/year, and paper number/year
+% this part will be updated by the production theme at the final stage
+\newcommand{\specs}[4]{\def\papno{#1}\def\volno{#2}\def\volyear{#3}\def\papid{#4}}
+\ifx\volno\undefined\def\volno{01}\fi
+\ifx\volyear\undefined\def\volyear{2026}\fi
+\ifx\papno\undefined\def\papno{P00}\fi
+\ifx\papid\undefined\def\papid{00000}\fi
+
+% abstract environment
+\renewenvironment{abstract}{%
+  \small
+  \begin{center}%
+    {\bfseries \abstractname\vspace{-.5em}\vspace{\z@}}%
+  \end{center}%
+  \quotation}%
+{\par\smallskip\noindent \textbf{Subject Classifications:
+  }\the@MSC
+  \par\smallskip\noindent
+  \textbf{Keywords: }\the@keywords \endquotation}
+
+% mathematics subject classification command
+\newcommand{\MSC}[1]{\def\the@MSC{\ignorespaces#1}}
+
+% keywords command
+\newcommand{\keywords}[1]{\def\the@keywords{\ignorespaces#1}}
+
+% The next group of commands makes the font smaller for the title and
+% for section and subsection headings, and adjusts the space just below 
+% each such heading.
+
+\renewcommand\title[1]{\gdef\@title{\reset@font\Large\bfseries #1}}
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                                   {-3.5ex \@plus -1ex \@minus -.2ex}%
+                                   {2.3ex \@plus.2ex}%
+                                   {\normalfont\large\bfseries}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                                     {-3ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\normalfont\normalsize\bfseries}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+                                     {-2.5ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\normalfont\normalsize\bfseries}}
+
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+                                     {2ex \@plus.5ex \@minus.2ex}%
+                                     {-1em}%
+                                     {\normalfont\normalsize\bfseries}}
+
+\renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
+                                     {2ex \@plus.5ex \@minus .2ex}%
+                                     {-1em}%
+                                     {\normalfont\normalsize\bfseries}}
+
+% These font declarations are for the footer appearing on all pages.
+\newfont{\footsc}{cmcsc10 at 8truept}
+\newfont{\footbf}{cmbx10 at 8truept}
+\newfont{\footrm}{cmr10 at 10truept}
+\newfont{\foottt}{cmtt10 at 10truept}
+
+\renewcommand{\ps@plain}{%
+\renewcommand{\@oddfoot}{\footsc combinatorial commutative algebra
+{\footbf\volno} (\volyear), \#\papno\hfil
+\ifnum\value{page}>1{\thepage}\else
+ \href{https://doi.org/10.abc123/\papid}{\foottt
+      https://doi.org/10.abc123/\papid\kern0.1em}\fi}}
+
+\pagestyle{plain}
+\g@addto@macro\bfseries{\boldmath}
+
+% Squashing the bibliography together a bit
+  \newlength{\BiblioSpacing}
+  \setlength{\BiblioSpacing}{0.4ex plus 0.1ex minus 0.1ex}
+  \newcommand{\SquashBibFurther}{%
+     \setlength{\BiblioSpacing}{0.2ex plus 0.1ex}}
+
+  \let\oldthebibliography\thebibliography
+  \let\endoldthebibliography\endthebibliography
+  \renewenvironment{thebibliography}[1]{%
+    \begin{oldthebibliography}{#1}%
+      \setlength{\parskip}{\BiblioSpacing}
+      \setlength{\itemsep}{\BiblioSpacing}
+      \ifdefined\bibsep\setlength{\bibsep}{\BiblioSpacing}\fi% for natbib
+  }%
+  {%
+    \end{oldthebibliography}%
+  }
+
+% load cleveref as a cca package option
+\ifx\use@cleveref\undefined
+\else
+  \ifx\cleverefoptions\undefined
+      \RequirePackage{cleveref}%
+  \else
+      \RequirePackage[\cleverefoptions]{cleveref}%
+  \fi
+\fi
+
+% define mathematical environments
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{claim}[theorem]{Claim}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{open}[theorem]{Open Problem}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{question}[theorem]{Question}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{note}[theorem]{Note}
+
+% number equations within sections
+\numberwithin{equation}{section}
+
+% number figures and tables within sections
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+
+% backlinks from references
+\renewcommand\backref[1]{\ifx#1\relax \else (Cited on p.~#1) \fi}
+
+% For linking to an arXiv article:
+\newcommand{\arxiv}[1]{\href{https://arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+
+% Typeset a doi. Some magic to make underscores work:
+\def\doi{\begingroup\catcode`\_=12\relax\doi@arg}
+\def\doi@arg#1{\href{https://doi.org/#1}{\texttt{doi:#1}}\endgroup}

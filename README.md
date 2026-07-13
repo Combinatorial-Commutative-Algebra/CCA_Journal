@@ -12,17 +12,19 @@ This repository contains the LaTeX style file and a sample manuscript for prepar
 
 For a versioned download, use the Latest Release.
 
-## Option 1: Overleaf
+## Option 1: Local LaTeX (compile on your computer)
+
+1. Download this repository (green **Code** button → **Download ZIP**) and unzip it.
+2. Start by copying `cca-sample.tex` and editing it.
+3. Make sure `cca.sty` stays in the same folder as your manuscript `.tex` file.
+
+## Option 2: Overleaf
 
 **Overleaf template (view-only):** https://www.overleaf.com/read/qnpqhkbsjrwk#c6d1f4
 
 Please open the link and create your own editable copy (e.g. “Copy Project”), then write in your copy.
 
-## Option 2: Local LaTeX (compile on your computer)
-
-1. Download this repository (green **Code** button → **Download ZIP**) and unzip it.
-2. Start by copying `cca-sample.tex` and editing it.
-3. Make sure `cca.sty` stays in the same folder as your manuscript `.tex` file.
+## Using the CCA style file
 
 CCA papers should begin with:
 ```tex

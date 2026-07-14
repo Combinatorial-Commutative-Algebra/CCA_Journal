@@ -155,13 +155,18 @@ CCA articles begin with the following two lines.
 \documentclass[12pt]{article}
 \usepackage[amsmath]{cca}
 \end{verbatim}
-The option \verb|amsmath| can be omitted if the \texttt{amsmath}
-package is not needed.  The packages \texttt{geometry},
-\texttt{amsthm}, \texttt{amssymb}, \texttt{hyperref}, and
-\texttt{microtype} are automatically loaded. Please do not reload or
-set any options for these packages. The packages \texttt{fullpage},
-\texttt{authblk}, \texttt{babel} are explicitly forbidden, as is any
-command that would change page or margin sizes.
+\begin{itemize}
+\item The option \verb|amsmath| can be omitted if the \texttt{amsmath}
+  package is not needed.
+\item The packages \texttt{geometry}, \texttt{amsthm},
+  \texttt{amssymb}, \texttt{hyperref}, and \texttt{microtype} are
+  automatically loaded. Please do not reload or set any options for
+  these packages.
+\item The packages \texttt{fullpage}, \texttt{authblk}, \texttt{babel}
+  are explicitly forbidden, as is any command that would change page
+  or margin sizes.
+\end{itemize}
+   
 
 \begin{note}
   To use the \texttt{cleveref} package add it as an option to the

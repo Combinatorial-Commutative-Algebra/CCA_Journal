@@ -32,12 +32,13 @@ CCA papers should begin with:
 \usepackage[amsmath]{cca}
 ```
 
-Omit `[amsmath]` if you do not want to use the `amsmath` package.
+Omit `[amsmath]` if you do not want to use the `amsmath` package,
+or replace it with `[mathtools]` if you want to use the `mathtools` package.
 
 ### Notes / common pitfalls
 
 - The style file sets page size and margins. Please do not load packages or add commands that change them (e.g. `geometry`, `fullpage`, etc.).
-- `geometry`, `amssymb`, `amsthm`, `hyperref`, and `microtype` are already loaded. Please do not reload them or set their options.
+- `geometry`, `amssymb`, `amsthm`, `hyperref`, `microtype`, and `enumitem` are already loaded. Please do not reload them or set their options.
 - Forbidden packages: `fullpage`, `authblk`, `babel`.
 - If you want `cleveref`, do not load it directly. Instead use:
   - `\usepackage[amsmath,cleveref]{cca}`

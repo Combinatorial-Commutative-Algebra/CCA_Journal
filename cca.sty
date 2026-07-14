@@ -116,11 +116,13 @@
 % package options
 \DeclareOption{amsmath}{\let\use@amsmath=\relax}
 \DeclareOption{cleveref}{\let\use@cleveref=\relax}
+\DeclareOption{mathtools}{\let\use@mathtools=\relax}
 \ProcessOptions\relax
 
 % load default packages and page settings
 \RequirePackage[letterpaper,margin=20mm,footskip=10mm]{geometry}
 \ifx\use@amsmath\undefined\else\RequirePackage{amsmath}\fi
+\ifx\use@mathtools\undefined\else\RequirePackage{mathtools}\fi
 \RequirePackage{amsthm,amssymb}
 \RequirePackage[colorlinks=true,citecolor=black,linkcolor=black,urlcolor=blue,pagebackref]{hyperref}
 \RequirePackage[disable=ifdraft]{microtype}

@@ -44,6 +44,8 @@ or replace it with `[mathtools]` if you want to use the `mathtools` package.
   - `\usepackage[amsmath,cleveref]{cca}`
   - (Optional) set options via `\def\cleverefoptions{...}` as shown in `cca-sample.tex`.
 
+For more information, please see the `cca-sample.pdf` file in this repository.
+
 ## Questions / problems
 
 If you run into a compilation issue or think something in the template should be improved, please open a GitHub Issue (or contact the CCA editorial team).

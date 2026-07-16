@@ -133,6 +133,7 @@
 \RequirePackage[disable=ifdraft]{microtype}
 \RequirePackage{enumitem}
 \setlist{topsep=1pt,partopsep=1pt,parsep=1pt,itemsep=1pt}
+\RequirePackage{lastpage}
 
 % use nicer inequalities by default
 \renewcommand{\geq}{\geqslant}
@@ -206,7 +207,7 @@
 
 \renewcommand{\ps@plain}{%
 \renewcommand{\@oddfoot}{\footsc combinatorial commutative algebra
-{\footbf V\volno} (\volyear), N\papno, P\hfil
+{\footbf V\volno} (\volyear), N\papno, P\pageref{LastPage}\hfil
 \ifnum\value{page}>1{\thepage}\else
  \href{https://doi.org/10.abc123/\papid}{\foottt
       https://doi.org/10.abc123/\papid\kern0.1em}\fi}}

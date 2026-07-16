@@ -283,3 +283,6 @@
 % Typeset a doi. Some magic to make underscores work:
 \def\doi{\begingroup\catcode`\_=12\relax\doi@arg}
 \def\doi@arg#1{\href{https://doi.org/#1}{\texttt{doi:#1}}\endgroup}
+
+% command for printing author information automatically at the end
+\AtEndDocument{\authorinformation}

@@ -146,10 +146,10 @@
 
 % Defines volume number/year, and paper number/year
 % this part will be updated by the production theme at the final stage
-\newcommand{\specs}[4]{\def\papno{#1}\def\volno{#2}\def\volyear{#3}\def\papid{#4}}
-\ifx\volno\undefined\def\volno{01}\fi
+\newcommand{\specs}[4]{\def\volno{#1}\def\volyear{#2}\def\papno{#3}\def\papid{#4}}
+\ifx\volno\undefined\def\volno{00}\fi
 \ifx\volyear\undefined\def\volyear{2026}\fi
-\ifx\papno\undefined\def\papno{P00}\fi
+\ifx\papno\undefined\def\papno{00}\fi
 \ifx\papid\undefined\def\papid{00000}\fi
 
 % abstract environment

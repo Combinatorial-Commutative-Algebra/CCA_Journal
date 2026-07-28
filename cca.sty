@@ -284,6 +284,7 @@
 \newcommand{\arxiv}[1]{\href{https://arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
 
 % Typeset a doi. Some magic to make underscores work:
+% For other problematic characters, see code of doi package
 \def\doi{\begingroup\catcode`\_=12\relax\doi@arg}
 \def\doi@arg#1{\href{https://doi.org/#1}{\texttt{doi:#1}}\endgroup}
 

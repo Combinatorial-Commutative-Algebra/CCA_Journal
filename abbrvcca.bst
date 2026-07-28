@@ -859,6 +859,7 @@ FUNCTION {misc}
   format.howpublished new.block.checka
   format.howpublished output
   format.date output
+  new.block
   format.arXiv output
   new.block
   format.doi output

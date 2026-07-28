@@ -105,7 +105,7 @@ FUNCTION {output.bibitem}
 }
 
 FUNCTION {fin.entry}
-{ add.period$
+{ %add.period$
   write$
   newline$
 }

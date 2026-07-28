@@ -104,12 +104,6 @@ FUNCTION {output.bibitem}
   before.all 'output.state :=
 }
 
-FUNCTION {fin.entry}
-{ %add.period$
-  write$
-  newline$
-}
-
 FUNCTION {new.block}
 { output.state before.all =
     'skip$
@@ -144,6 +138,20 @@ FUNCTION {or}
 {   { pop$ #1 }
     'skip$
   if$
+}
+
+FUNCTION {fin.entry}
+{   doi empty$ not
+    url empty$ not
+    eprint empty$ not
+    or or
+    { write$
+      newline$ }
+    { add.period$
+      write$
+      newline$
+    }
+    if$
 }
 
 FUNCTION {new.block.checka}

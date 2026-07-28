@@ -330,29 +330,34 @@ All CCA submissions \textbf{must} contain the following information.
 \subsection{Bibliographic references}
 
 All CCA articles must include a complete and up-to-date list of
-bibliographic references. Such information can usually be retrieved
-from databases like \href{https://mathscinet.ams.org}{Mathscinet} and
-\href{https://zbmath.org/}{zbMath}; the latter can also be used for
-arXiv preprints. All references appearing in the bibliography must be
-cited in the text. Please make citations as explicit as possible by
-including an environment number (e.g.: Theorem 2.1(a), Example IV), a
-(sub)section number, or a page number.  Upon compilation, backlinks
-from the references to the text will be automatically inserted.
+bibliographic references. All references appearing in the bibliography
+must be cited in the text. Please make citations as explicit as
+possible by including an environment number (e.g.: Theorem 2.1(a),
+Example IV), a (sub)section number, or a page number.  Upon
+compilation, backlinks from the references to the text will be
+automatically inserted.
 
-CCA recommends using BibTeX with the
-\href{https://www.bibtex.com/s/bibliography-style-base-abbrv/}{\texttt{abbrv}
-  bibliography style}, then copying and pasting the contents of the
-compiled \texttt{.bbl} file into the main source file. If a dedicated
-\texttt{.bib} is used for the submission, then it can be uploaded
-along with the source file. If not using BibTeX, please use
-\texttt{thebibliography} environment and format your references as
-close as possible to the aforementioned \texttt{abbrv} style.
-
-Whenever possible, CCA suggests adding arXiv and DOI links after each
-reference inside \texttt{thebibliography} environment. For arXiv
-papers, use \verb|\arxiv{YYMM.number}| or the appropriate
-identifier. For published works, use \verb|\doi{number}|. See this
-document and its source for examples.
+CCA recommends compiling a bibliography with BibTeX. CCA applies the
+custom style \texttt{abbrvcca.bst}, which automatically produces arXiv
+and DOI links for correctly formatted references. If usig BibTeX,
+please upload your \texttt{.bib} file along with your sources.
+\begin{itemize}
+\item Bibliographic information for published works can be freely
+  retrieved from databases such as \href{https://zbmath.org/}{zbMath}
+  and \href{https://mathscinet.ams.org/mrlookup}{MR Lookup}. Whenever
+  possible, please include a Digital Object Identifier in the format
+  \texttt{doi = \{10.1000/182\}}. If a DOI is not available, a
+  complete URL to the published work may be included using the
+  \texttt{url} field.
+\item References for \href{https://arxiv.org/}{arXiv} preprints can be
+  obtained directly from the preprint abstract page using the ``Export
+  BibTeX Citation'' link, or at \href{https://zbmath.org/}{zbMath}.
+\end{itemize}
+If not using BibTeX, please include your references in
+\texttt{thebibliography} environment with a \verb|\bibitem| for each
+entry. Please format your references as close as possible to the style
+in this sample file.  Whenever possible, please include arXiv and DOI
+links after each reference as shown in the source of this sample file.
 
 
 \section{Sample content}
@@ -361,16 +366,6 @@ document and its source for examples.
   A commutative ring is called \emph{amazing} if it is isomorphic to
   the edge ring of an amazing graph.
 \end{definition}
-
-\begin{example}
-  The complete graph on five vertices (see Figure \ref{fig:graph}) is
-  amazing. The fictional index of the graph can be found by solving
-  for $f$ in
-  \begin{equation}
-    v-e+f=2,
-  \end{equation}
-  where $v$ is the number of vertices and $e$ is the number of edges.
-\end{example}
 
 \begin{figure}[htb]
   \centering
@@ -385,6 +380,16 @@ document and its source for examples.
   \caption{A complete graph on five vertices.}
   \label{fig:graph}
 \end{figure}
+
+\begin{example}
+  The complete graph on five vertices (see Figure \ref{fig:graph}) is
+  amazing. The fictional index of the graph can be found by solving
+  for $f$ in
+  \begin{equation}
+    v-e+f=2,
+  \end{equation}
+  where $v$ is the number of vertices and $e$ is the number of edges.
+\end{example}
 
 \begin{theorem}
   Every amazing ring is excellent.

@@ -1,3 +1,6 @@
+% 2026-07-28: Combinatorial Commutative Algebra BibTeX style
+% building upon abbrv and contributions below, with additional tweaks
+%
 % 2017-11-13 Gautam Iyer: Modified to include DOI links.
 %
 % habbrv: adds eprint field (www-admin@xxx.lanl.gov)

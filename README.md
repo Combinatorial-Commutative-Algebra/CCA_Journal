@@ -5,6 +5,7 @@ This repository contains the LaTeX style file and a sample manuscript for prepar
 ## What’s in this repo
 
 - `cca.sty` — the CCA style file
+- `abbrvcca.bst` — the CCA BibTeX style file
 - `cca-sample.tex` — a sample file showing how to format a manuscript
 - `cca-sample.pdf` — the expected output from the sample file
 - `CCAlogo.png` — the CCA logo

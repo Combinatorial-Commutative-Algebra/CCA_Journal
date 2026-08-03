@@ -2,6 +2,7 @@
 % building upon abbrv and contributions below, with additional tweaks
 %
 % 2017-11-13 Gautam Iyer: Modified to include DOI links.
+% see https://www.math.cmu.edu/~gautam/sj/blog/20171114-bibtex-doi.html
 %
 % habbrv: adds eprint field (www-admin@xxx.lanl.gov)
 % an extension of:
